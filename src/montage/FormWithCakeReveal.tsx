@@ -6,6 +6,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { PhoneSource } from "./PhoneSource";
+import { MaskRect } from "./MaskRect";
 import { SceneTitle } from "./SceneTitle";
 import { BRAND } from "./theme";
 
@@ -59,7 +60,20 @@ export const FormWithCakeReveal: React.FC<Props> = ({ durationInFrames }) => {
         zoom={zoom}
         panY={panY}
         muted
-      />
+      >
+        <MaskRect
+          x={-40}
+          y={1400}
+          width={1260}
+          height={1200}
+          label=""
+          background={BRAND.cream}
+          border="none"
+          borderRadius={0}
+          boxShadow="none"
+          fadeInFrames={1}
+        />
+      </PhoneSource>
 
       <AbsoluteFill
         style={{

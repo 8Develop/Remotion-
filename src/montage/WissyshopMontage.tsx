@@ -12,6 +12,7 @@ import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
 import { FormWithCakeReveal } from "./FormWithCakeReveal";
 import { FlexibleBadge } from "./FlexibleBadge";
+import { LoginAnimation, LOGIN_ANIMATION_DURATION } from "./LoginAnimation";
 import {
   ClientJourneyVideo,
   CLIENT_JOURNEY_DURATION,
@@ -65,51 +66,8 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 12 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(3)}>
-          <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
-            <PhoneSource
-              src="wissyshop-1.mp4"
-              startFromSeconds={4}
-              endAtSeconds={7}
-              cropTop={180}
-              cropBottom={140}
-              zoom={1.04}
-              muted
-            >
-              <MaskRect
-                x={80}
-                y={580}
-                width={1020}
-                height={230}
-                label="•  demo@wissyshop.com"
-                background="#FFFFFF"
-                border="3px solid #F26B2A"
-                borderRadius={32}
-                fontSize={58}
-                fontWeight={600}
-              />
-              <MaskRect
-                x={0}
-                y={1520}
-                width={1180}
-                height={290}
-                label="•  Saisie sécurisée"
-                background="#E5E7EB"
-                labelColor="#1A1A2E"
-                border="none"
-                borderRadius={0}
-                fontSize={60}
-                fontWeight={700}
-                boxShadow="0 -4px 12px rgba(0,0,0,0.08)"
-              />
-            </PhoneSource>
-            <SceneTitle
-              kicker="Étape 2"
-              title="Connexion commerçant"
-              subtitle="Accédez à votre espace en un clic"
-              position="bottom"
-            />
-          </AbsoluteFill>
+        <TransitionSeries.Sequence durationInFrames={LOGIN_ANIMATION_DURATION}>
+          <LoginAnimation />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -170,7 +128,20 @@ export const WissyshopMontage: React.FC = () => {
               cropBottom={140}
               zoom={1.02}
               muted
-            />
+            >
+              <MaskRect
+                x={-40}
+                y={1400}
+                width={1260}
+                height={1200}
+                label=""
+                background={BRAND.cream}
+                border="none"
+                borderRadius={0}
+                boxShadow="none"
+                fadeInFrames={1}
+              />
+            </PhoneSource>
             <SceneTitle
               kicker="Étape 5"
               title="Vous choisissez date & créneau"
@@ -267,7 +238,7 @@ export const WissyshopMontage: React.FC = () => {
 const SEQUENCE_FRAMES =
   d(3) +
   d(3) +
-  d(3) +
+  LOGIN_ANIMATION_DURATION +
   d(6) +
   PHOTO_PICKER_DURATION +
   d(14) +
