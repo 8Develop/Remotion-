@@ -8,6 +8,7 @@ import { Outro } from "./Outro";
 import { PhoneSource } from "./PhoneSource";
 import { MaskRect } from "./MaskRect";
 import { SceneTitle } from "./SceneTitle";
+import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { BRAND, FPS } from "./theme";
 
 loadFont();
@@ -204,6 +205,15 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 10 })}
         />
 
+        <TransitionSeries.Sequence durationInFrames={SOCIAL_SHARES_DURATION}>
+          <SocialShares />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: 10 })}
+        />
+
         <TransitionSeries.Sequence durationInFrames={d(6)}>
           <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
             <PhoneSource
@@ -216,7 +226,7 @@ export const WissyshopMontage: React.FC = () => {
               muted
             />
             <SceneTitle
-              kicker="Étape 7"
+              kicker="Étape 8"
               title="Votre boutique en ligne"
               subtitle="Prête pour vos premiers clients locaux"
               position="bottom"
@@ -238,6 +248,15 @@ export const WissyshopMontage: React.FC = () => {
 };
 
 const SEQUENCE_FRAMES =
-  d(3) + d(3) + d(10) + d(6) + d(16) + d(10) + d(5) + d(6) + d(5);
-const TRANSITION_FRAMES = 10 + 12 + 10 + 12 + 10 + 12 + 10 + 14;
+  d(3) +
+  d(3) +
+  d(10) +
+  d(6) +
+  d(16) +
+  d(10) +
+  d(5) +
+  SOCIAL_SHARES_DURATION +
+  d(6) +
+  d(5);
+const TRANSITION_FRAMES = 10 + 12 + 10 + 12 + 10 + 12 + 10 + 10 + 14;
 export const MONTAGE_TOTAL_FRAMES = SEQUENCE_FRAMES - TRANSITION_FRAMES;
