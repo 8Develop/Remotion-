@@ -9,3 +9,7 @@ dist
 .remotion
 .cache
 *.tsbuildinfo
+
+public/*.mp4
+public/*.mov
+public/*.webm
