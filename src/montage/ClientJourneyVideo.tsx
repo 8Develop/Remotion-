@@ -15,6 +15,7 @@ type CaptionProps = {
   text: string;
   duration: number;
   accent?: string;
+  withBanner?: boolean;
 };
 
 const Caption: React.FC<CaptionProps> = ({
@@ -22,6 +23,7 @@ const Caption: React.FC<CaptionProps> = ({
   text,
   duration,
   accent = BRAND.orangeFrom,
+  withBanner = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -47,6 +49,20 @@ const Caption: React.FC<CaptionProps> = ({
         fontFamily: "Poppins, system-ui, sans-serif",
       }}
     >
+      {withBanner ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 380,
+            background:
+              "linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.95) 70%, rgba(255,255,255,0) 100%)",
+            opacity,
+          }}
+        />
+      ) : null}
       <div
         style={{
           opacity,
@@ -117,16 +133,16 @@ export const ClientJourneyVideo: React.FC = () => {
             muted
           >
             <MaskRect
-              x={270}
-              y={1030}
-              width={560}
-              height={60}
-              label="Publié par Wissyshop Liège"
+              x={195}
+              y={1005}
+              width={820}
+              height={165}
+              label="Publié par Wissyshop Liège  ·  Il y a 2 min"
               background="#FFFFFF"
               labelColor={BRAND.navySoft}
               border="none"
-              borderRadius={8}
-              fontSize={34}
+              borderRadius={10}
+              fontSize={36}
               fontWeight={600}
               boxShadow="none"
               fadeInFrames={1}
@@ -136,6 +152,7 @@ export const ClientJourneyVideo: React.FC = () => {
             kicker="Étape 8"
             text="Votre client voit votre publication"
             duration={FB_LEN}
+            withBanner
           />
         </AbsoluteFill>
       </Sequence>

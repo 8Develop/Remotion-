@@ -11,6 +11,7 @@ import { SceneTitle } from "./SceneTitle";
 import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
 import { FormWithCakeReveal } from "./FormWithCakeReveal";
+import { FlexibleBadge } from "./FlexibleBadge";
 import {
   ClientJourneyVideo,
   CLIENT_JOURNEY_DURATION,
@@ -172,10 +173,11 @@ export const WissyshopMontage: React.FC = () => {
             />
             <SceneTitle
               kicker="Étape 5"
-              title="Prix, stock, date limite"
-              subtitle="Le calcul du prix final se fait tout seul"
+              title="Vous choisissez date & créneau"
+              subtitle="100 % flexible — vos horaires, votre rythme"
               position="bottom"
             />
+            <FlexibleBadge />
           </AbsoluteFill>
         </TransitionSeries.Sequence>
 

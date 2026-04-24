@@ -1,5 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { BRAND } from "./theme";
+import { WissyBagSvg } from "./WissyLogo";
 
 export const Intro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -69,18 +70,14 @@ export const Intro: React.FC = () => {
       >
         <div
           style={{
-            width: 260,
-            height: 260,
-            borderRadius: 60,
-            background: `linear-gradient(135deg, ${BRAND.orangeFrom}, ${BRAND.orangeTo})`,
+            width: 300,
+            height: 300,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 150,
-            boxShadow: "0 24px 60px rgba(242,107,42,0.45)",
           }}
         >
-          🛍️
+          <WissyBagSvg size={300} />
         </div>
       </div>
 
