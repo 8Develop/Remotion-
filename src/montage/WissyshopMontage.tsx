@@ -11,6 +11,15 @@ import { SceneTitle } from "./SceneTitle";
 import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
 import { FormWithCakeReveal } from "./FormWithCakeReveal";
+import {
+  ClientJourneyVideo,
+  CLIENT_JOURNEY_DURATION,
+} from "./ClientJourneyVideo";
+import {
+  PaymentSuccess,
+  MerchantReceives,
+  MerchantPrepare,
+} from "./PaymentAndMerchant";
 import { BRAND, FPS } from "./theme";
 
 loadFont();
@@ -209,24 +218,35 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 10 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(6)}>
-          <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
-            <PhoneSource
-              src="wissyshop-2.mp4"
-              startFromSeconds={0}
-              endAtSeconds={6}
-              cropTop={180}
-              cropBottom={140}
-              zoom={1.02}
-              muted
-            />
-            <SceneTitle
-              kicker="Étape 8"
-              title="Votre boutique en ligne"
-              subtitle="Prête pour vos premiers clients locaux"
-              position="bottom"
-            />
-          </AbsoluteFill>
+        <TransitionSeries.Sequence durationInFrames={CLIENT_JOURNEY_DURATION}>
+          <ClientJourneyVideo />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: 10 })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={d(4)}>
+          <PaymentSuccess />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={slide({ direction: "from-bottom" })}
+          timing={linearTiming({ durationInFrames: 12 })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={d(5)}>
+          <MerchantReceives />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: 10 })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={d(3)}>
+          <MerchantPrepare />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -252,8 +272,11 @@ const SEQUENCE_FRAMES =
   d(10) +
   d(5) +
   SOCIAL_SHARES_DURATION +
-  d(6) +
+  CLIENT_JOURNEY_DURATION +
+  d(4) +
+  d(5) +
+  d(3) +
   d(5);
 const TRANSITION_FRAMES =
-  10 + 12 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 14;
+  10 + 12 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 14;
 export const MONTAGE_TOTAL_FRAMES = SEQUENCE_FRAMES - TRANSITION_FRAMES;

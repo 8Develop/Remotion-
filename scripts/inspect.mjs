@@ -5,6 +5,7 @@ import path from "node:path";
 const files = [
   path.resolve("public/wissyshop-1.mp4"),
   path.resolve("public/wissyshop-2.mp4"),
+  path.resolve("public/wissyshop-3.mp4"),
 ];
 
 for (const file of files) {
