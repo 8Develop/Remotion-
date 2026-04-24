@@ -68,7 +68,7 @@ export const Intro: React.FC = () => {
           marginBottom: 30,
         }}
       >
-        <WissyLogo height={180} />
+        <WissyLogo height={440} />
       </div>
 
       <div

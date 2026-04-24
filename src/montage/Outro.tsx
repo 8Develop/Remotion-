@@ -62,7 +62,7 @@ export const Outro: React.FC = () => {
           boxShadow: "0 24px 60px rgba(0,0,0,0.25)",
         }}
       >
-        <WissyLogo height={140} />
+        <WissyLogo height={320} />
       </div>
 
       <div

@@ -99,22 +99,18 @@ type Props = {
   withWordmark?: boolean;
 };
 
-export const WissyLogo: React.FC<Props> = ({
-  height,
-  withWordmark = true,
-}) => {
+export const WissyLogo: React.FC<Props> = ({ height }) => {
+  const width = height * 1.55;
   return (
-    <div
+    <img
+      src={staticFile("wissy-logo-DKicm775.png")}
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: height * 0.08,
+        width,
         height,
+        objectFit: "contain",
+        filter: "drop-shadow(0 18px 30px rgba(242, 107, 42, 0.35))",
       }}
-    >
-      <WissyBagSvg size={height} />
-      {withWordmark ? <WissyScript height={height * 0.9} /> : null}
-    </div>
+    />
   );
 };
 
@@ -124,7 +120,7 @@ export const WissyLogoImage: React.FC<{ width: number; height: number }> = ({
 }) => {
   return (
     <img
-      src={staticFile("wissy-logo.png")}
+      src={staticFile("wissy-logo-DKicm775.png")}
       width={width}
       height={height}
       style={{
