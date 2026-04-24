@@ -1,39 +1,25 @@
 import { staticFile } from "remotion";
 
-type Props = {
-  size: number;
-  variant?: "icon" | "horizontal";
-  background?: "orange" | "light";
-};
-
-export const WissyLogo: React.FC<Props> = ({
-  size,
-  variant = "icon",
-  background = "orange",
-}) => {
-  const imgHeight = size;
-  const imgWidth = variant === "horizontal" ? size * 2.6 : size;
-
+const WissyScript: React.FC<{ height: number }> = ({ height }) => {
+  const fs = height * 1.05;
   return (
-    <img
-      src={staticFile("wissy-logo.png")}
-      width={imgWidth}
-      height={imgHeight}
+    <div
       style={{
-        width: imgWidth,
-        height: imgHeight,
-        objectFit: "contain",
-        background:
-          background === "light" ? "transparent" : "transparent",
-        filter:
-          background === "orange"
-            ? "drop-shadow(0 16px 32px rgba(0,0,0,0.25))"
-            : "drop-shadow(0 12px 26px rgba(242,107,42,0.35))",
+        fontFamily:
+          "'Pacifico', 'Caveat', 'Comic Sans MS', system-ui, sans-serif",
+        fontSize: fs,
+        fontWeight: 900,
+        fontStyle: "italic",
+        color: "#F58A2B",
+        lineHeight: 0.95,
+        letterSpacing: -fs * 0.015,
+        textShadow:
+          "0 4px 0 #E55A0E, 0 6px 0 #C84A0E, 0 10px 22px rgba(242,107,42,0.35)",
+        WebkitTextStroke: "3px #E55A0E",
       }}
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
-    />
+    >
+      Wissy
+    </div>
   );
 };
 
@@ -52,7 +38,7 @@ export const WissyBagSvg: React.FC<{ size: number }> = ({ size }) => {
         <linearGradient id="bagGrad" x1="20%" y1="0%" x2="80%" y2="100%">
           <stop offset="0%" stopColor="#FFB454" />
           <stop offset="45%" stopColor="#F58A2B" />
-          <stop offset="100%" stopColor="#E25B13" />
+          <stop offset="100%" stopColor="#D84A0E" />
         </linearGradient>
         <linearGradient id="handleGrad" x1="50%" y1="0%" x2="50%" y2="100%">
           <stop offset="0%" stopColor="#FFA23B" />
@@ -61,72 +47,92 @@ export const WissyBagSvg: React.FC<{ size: number }> = ({ size }) => {
       </defs>
 
       <path
-        d="M60 58 Q60 30 85 30 Q110 30 110 58"
+        d="M60 58 Q60 28 90 28 Q120 28 120 58"
         stroke="url(#handleGrad)"
+        strokeWidth="14"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <circle cx="60" cy="58" r="8" fill="#FFFFFF" stroke="#E55A0E" strokeWidth="3" />
+      <circle cx="120" cy="58" r="8" fill="#FFFFFF" stroke="#E55A0E" strokeWidth="3" />
+
+      <path
+        d="M28 58
+           Q28 50 38 50
+           L152 50
+           Q162 50 162 58
+           L156 170
+           Q154 188 138 188
+           L52 188
+           Q36 188 34 170
+           Z"
+        fill="url(#bagGrad)"
+        stroke="#D84A0E"
+        strokeWidth="3"
+      />
+
+      <path
+        d="M70 105
+           Q95 140 120 105"
+        stroke="#FFFFFF"
         strokeWidth="12"
         strokeLinecap="round"
         fill="none"
       />
-      <circle cx="60" cy="58" r="7" fill="#FFFFFF" stroke="#E55A0E" strokeWidth="3" />
-      <circle cx="110" cy="58" r="7" fill="#FFFFFF" stroke="#E55A0E" strokeWidth="3" />
+      <circle cx="70" cy="108" r="6" fill="#FFFFFF" />
+      <circle cx="120" cy="108" r="6" fill="#FFFFFF" />
 
-      <path
-        d="M35 60
-           Q35 55 40 55
-           L150 55
-           Q155 55 155 60
-           L148 172
-           Q147 186 133 186
-           L57 186
-           Q43 186 42 172
-           Z"
-        fill="url(#bagGrad)"
-      />
-
-      <path
-        d="M75 100
-           Q95 130 115 100"
-        stroke="#FFFFFF"
-        strokeWidth="10"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <circle cx="75" cy="100" r="5" fill="#FFFFFF" />
-      <circle cx="115" cy="100" r="5" fill="#FFFFFF" />
-
-      <g transform="translate(140, 32)">
+      <g transform="translate(155, 30)">
         <path
-          d="M0 -12 L2 -2 L12 0 L2 2 L0 12 L-2 2 L-12 0 L-2 -2 Z"
-          fill="#FFB454"
+          d="M0 -16 L3 -3 L16 0 L3 3 L0 16 L-3 3 L-16 0 L-3 -3 Z"
+          fill="#FFC04A"
+          stroke="#E55A0E"
+          strokeWidth="1.5"
         />
       </g>
     </svg>
   );
 };
 
-export const WissyWordmark: React.FC<{ height: number; color?: string }> = ({
+type Props = {
+  height: number;
+  withWordmark?: boolean;
+};
+
+export const WissyLogo: React.FC<Props> = ({
   height,
-  color = "#F26B2A",
+  withWordmark = true,
 }) => {
-  const width = height * 2.1;
   return (
     <div
       style={{
-        height,
-        width,
-        color,
-        fontSize: height * 0.95,
-        fontWeight: 900,
-        fontStyle: "italic",
-        fontFamily: "Poppins, system-ui, sans-serif",
-        letterSpacing: -2,
         display: "flex",
         alignItems: "center",
-        textShadow: "0 6px 14px rgba(242, 107, 42, 0.35)",
-        lineHeight: 1,
+        gap: height * 0.08,
+        height,
       }}
     >
-      Wissy
+      <WissyBagSvg size={height} />
+      {withWordmark ? <WissyScript height={height * 0.9} /> : null}
     </div>
+  );
+};
+
+export const WissyLogoImage: React.FC<{ width: number; height: number }> = ({
+  width,
+  height,
+}) => {
+  return (
+    <img
+      src={staticFile("wissy-logo.png")}
+      width={width}
+      height={height}
+      style={{
+        width,
+        height,
+        objectFit: "contain",
+        filter: "drop-shadow(0 16px 32px rgba(242,107,42,0.35))",
+      }}
+    />
   );
 };

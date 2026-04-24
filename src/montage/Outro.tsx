@@ -1,6 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { BRAND } from "./theme";
-import { WissyBagSvg } from "./WissyLogo";
+import { WissyLogo } from "./WissyLogo";
 
 export const Outro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -52,18 +52,17 @@ export const Outro: React.FC = () => {
         style={{
           transform: `scale(${logoIn * pulse})`,
           opacity: logoIn,
-          width: 280,
-          height: 280,
-          borderRadius: 70,
           background: BRAND.white,
+          borderRadius: 48,
+          padding: "24px 48px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           marginBottom: 40,
-          boxShadow: "0 24px 60px rgba(0,0,0,0.2)",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.25)",
         }}
       >
-        <WissyBagSvg size={220} />
+        <WissyLogo height={140} />
       </div>
 
       <div

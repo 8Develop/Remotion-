@@ -1,6 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { BRAND } from "./theme";
-import { WissyBagSvg } from "./WissyLogo";
+import { WissyLogo } from "./WissyLogo";
 
 export const Intro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -63,46 +63,27 @@ export const Intro: React.FC = () => {
 
       <div
         style={{
-          transform: `scale(${logoIn}) rotate(${(1 - logoIn) * 30}deg)`,
+          transform: `scale(${logoIn}) rotate(${(1 - logoIn) * 20}deg)`,
           opacity: logoIn,
-          marginBottom: 40,
+          marginBottom: 30,
         }}
       >
-        <div
-          style={{
-            width: 300,
-            height: 300,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <WissyBagSvg size={300} />
-        </div>
+        <WissyLogo height={180} />
       </div>
 
       <div
         style={{
           transform: `translateY(${(1 - titleIn) * 40}px)`,
           opacity: titleIn,
-          fontSize: 170,
+          fontSize: 140,
           fontWeight: 900,
           color: BRAND.navy,
-          letterSpacing: -4,
-          lineHeight: 0.95,
+          letterSpacing: -3,
+          lineHeight: 1,
+          marginTop: 20,
         }}
       >
-        wissy
-        <span
-          style={{
-            background: `linear-gradient(135deg, ${BRAND.orangeFrom}, ${BRAND.orangeTo})`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          shop
-        </span>
+        shop
       </div>
 
       <div
