@@ -10,9 +10,16 @@ import { MaskRect } from "./MaskRect";
 import { SceneTitle } from "./SceneTitle";
 import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
-import { FormWithCakeReveal } from "./FormWithCakeReveal";
-import { FlexibleBadge } from "./FlexibleBadge";
 import { LoginAnimation, LOGIN_ANIMATION_DURATION } from "./LoginAnimation";
+import {
+  DashboardAnimation,
+  DASHBOARD_DURATION,
+} from "./DashboardAnimation";
+import {
+  ProductFormAnimation,
+  PRODUCT_FORM_DURATION,
+} from "./ProductFormAnimation";
+import { PricingAnimation, PRICING_DURATION } from "./PricingAnimation";
 import {
   ClientJourneyVideo,
   CLIENT_JOURNEY_DURATION,
@@ -75,24 +82,8 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 10 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(6)}>
-          <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
-            <PhoneSource
-              src="wissyshop-1.mp4"
-              startFromSeconds={42}
-              endAtSeconds={48}
-              cropTop={180}
-              cropBottom={140}
-              zoom={1.0}
-              muted
-            />
-            <SceneTitle
-              kicker="Étape 3"
-              title="Votre tableau de bord"
-              subtitle="Tous vos produits, en un coup d'œil"
-              position="bottom"
-            />
-          </AbsoluteFill>
+        <TransitionSeries.Sequence durationInFrames={DASHBOARD_DURATION}>
+          <DashboardAnimation />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -109,8 +100,8 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 10 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(14)}>
-          <FormWithCakeReveal durationInFrames={d(14)} />
+        <TransitionSeries.Sequence durationInFrames={PRODUCT_FORM_DURATION}>
+          <ProductFormAnimation />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -118,38 +109,8 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 10 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(10)}>
-          <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
-            <PhoneSource
-              src="wissyshop-1.mp4"
-              startFromSeconds={85}
-              endAtSeconds={95}
-              cropTop={180}
-              cropBottom={140}
-              zoom={1.02}
-              muted
-            >
-              <MaskRect
-                x={-40}
-                y={1400}
-                width={1260}
-                height={1200}
-                label=""
-                background={BRAND.cream}
-                border="none"
-                borderRadius={0}
-                boxShadow="none"
-                fadeInFrames={1}
-              />
-            </PhoneSource>
-            <SceneTitle
-              kicker="Étape 5"
-              title="Vous choisissez date & créneau"
-              subtitle="100 % flexible — vos horaires, votre rythme"
-              position="bottom"
-            />
-            <FlexibleBadge />
-          </AbsoluteFill>
+        <TransitionSeries.Sequence durationInFrames={PRICING_DURATION}>
+          <PricingAnimation />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -239,10 +200,10 @@ const SEQUENCE_FRAMES =
   d(3) +
   d(3) +
   LOGIN_ANIMATION_DURATION +
-  d(6) +
+  DASHBOARD_DURATION +
   PHOTO_PICKER_DURATION +
-  d(14) +
-  d(10) +
+  PRODUCT_FORM_DURATION +
+  PRICING_DURATION +
   d(5) +
   SOCIAL_SHARES_DURATION +
   CLIENT_JOURNEY_DURATION +
