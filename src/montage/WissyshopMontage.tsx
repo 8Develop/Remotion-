@@ -9,6 +9,7 @@ import { PhoneSource } from "./PhoneSource";
 import { MaskRect } from "./MaskRect";
 import { SceneTitle } from "./SceneTitle";
 import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
+import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
 import { BRAND, FPS } from "./theme";
 
 loadFont();
@@ -53,12 +54,12 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 12 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(10)}>
+        <TransitionSeries.Sequence durationInFrames={d(3)}>
           <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
             <PhoneSource
               src="wissyshop-1.mp4"
               startFromSeconds={4}
-              endAtSeconds={14}
+              endAtSeconds={7}
               cropTop={180}
               cropBottom={140}
               zoom={1.04}
@@ -130,12 +131,21 @@ export const WissyshopMontage: React.FC = () => {
           timing={linearTiming({ durationInFrames: 12 })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={d(16)}>
+        <TransitionSeries.Sequence durationInFrames={PHOTO_PICKER_DURATION}>
+          <PhotoPickerStep />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: 10 })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={d(14)}>
           <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
             <PhoneSource
               src="wissyshop-1.mp4"
               startFromSeconds={65}
-              endAtSeconds={81}
+              endAtSeconds={79}
               cropTop={180}
               cropBottom={140}
               zoom={1.02}
@@ -143,8 +153,8 @@ export const WissyshopMontage: React.FC = () => {
             />
             <SceneTitle
               kicker="Étape 4"
-              title="Ajoutez un produit"
-              subtitle="Nom, description, photo…"
+              title="Remplissez les détails"
+              subtitle="Nom, description, photo du produit"
               position="bottom"
             />
           </AbsoluteFill>
@@ -250,13 +260,15 @@ export const WissyshopMontage: React.FC = () => {
 const SEQUENCE_FRAMES =
   d(3) +
   d(3) +
-  d(10) +
+  d(3) +
   d(6) +
-  d(16) +
+  PHOTO_PICKER_DURATION +
+  d(14) +
   d(10) +
   d(5) +
   SOCIAL_SHARES_DURATION +
   d(6) +
   d(5);
-const TRANSITION_FRAMES = 10 + 12 + 10 + 12 + 10 + 12 + 10 + 10 + 14;
+const TRANSITION_FRAMES =
+  10 + 12 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 14;
 export const MONTAGE_TOTAL_FRAMES = SEQUENCE_FRAMES - TRANSITION_FRAMES;
