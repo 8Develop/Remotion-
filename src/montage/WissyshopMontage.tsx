@@ -10,6 +10,7 @@ import { MaskRect } from "./MaskRect";
 import { SceneTitle } from "./SceneTitle";
 import { SocialShares, SOCIAL_SHARES_DURATION } from "./SocialShares";
 import { PhotoPickerStep, PHOTO_PICKER_DURATION } from "./PhotoPickerStep";
+import { FormWithCakeReveal } from "./FormWithCakeReveal";
 import { BRAND, FPS } from "./theme";
 
 loadFont();
@@ -141,23 +142,7 @@ export const WissyshopMontage: React.FC = () => {
         />
 
         <TransitionSeries.Sequence durationInFrames={d(14)}>
-          <AbsoluteFill style={{ backgroundColor: BRAND.cream }}>
-            <PhoneSource
-              src="wissyshop-1.mp4"
-              startFromSeconds={65}
-              endAtSeconds={79}
-              cropTop={180}
-              cropBottom={140}
-              zoom={1.02}
-              muted
-            />
-            <SceneTitle
-              kicker="Étape 4"
-              title="Remplissez les détails"
-              subtitle="Nom, description, photo du produit"
-              position="bottom"
-            />
-          </AbsoluteFill>
+          <FormWithCakeReveal durationInFrames={d(14)} />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
