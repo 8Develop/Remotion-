@@ -366,33 +366,99 @@ export const MerchantReceives: React.FC = () => {
           opacity: moneyIn,
           transform: `translateY(${(1 - moneyIn) * 40}px)`,
           width: 880,
-          background: `linear-gradient(135deg, #D4F0E0 0%, #A7E3C2 100%)`,
-          border: `3px solid ${BRAND.mintText}`,
+          background: "#FFFFFF",
+          border: "2px solid #F4E6D9",
           borderRadius: 32,
-          padding: "24px 30px",
+          padding: "20px 28px",
           display: "flex",
-          alignItems: "center",
-          gap: 22,
+          flexDirection: "column",
+          gap: 10,
+          fontFamily: "Poppins, system-ui, sans-serif",
         }}
       >
         <div
           style={{
-            width: 80,
-            height: 80,
-            borderRadius: 40,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 24,
+            color: BRAND.gray,
+            fontWeight: 600,
+          }}
+        >
+          <span>Total payé par le client</span>
+          <span style={{ color: BRAND.navy, fontWeight: 700 }}>45,00 €</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 22,
+            color: BRAND.gray,
+            fontWeight: 500,
+          }}
+        >
+          <span>− Commission Wissyshop (5 %)</span>
+          <span>− 2,25 €</span>
+        </div>
+        <div
+          style={{
+            height: 2,
+            background: "#F0E4D9",
+            margin: "4px 0",
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 32,
+            color: BRAND.navy,
+            fontWeight: 800,
+          }}
+        >
+          <span>Vous recevez</span>
+          <span style={{ color: BRAND.mintText, fontSize: 38, fontWeight: 900 }}>
+            42,75 €
+          </span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          opacity: moneyIn,
+          transform: `translateY(${(1 - moneyIn) * 40}px)`,
+          width: 880,
+          background: `linear-gradient(135deg, #D4F0E0 0%, #A7E3C2 100%)`,
+          border: `3px solid ${BRAND.mintText}`,
+          borderRadius: 32,
+          padding: "20px 28px",
+          display: "flex",
+          alignItems: "center",
+          gap: 18,
+          marginTop: 4,
+        }}
+      >
+        <div
+          style={{
+            width: 70,
+            height: 70,
+            borderRadius: 35,
             background: BRAND.mintText,
             color: "white",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 40,
+            fontSize: 36,
           }}
         >
           💶
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 28, color: BRAND.navy, fontWeight: 600 }}>
-            + 45,00 € sur votre compte
+          <div style={{ fontSize: 26, color: BRAND.navy, fontWeight: 700 }}>
+            + 42,75 € sur votre compte
           </div>
           <div
             style={{

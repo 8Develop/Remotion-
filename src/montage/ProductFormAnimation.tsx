@@ -59,8 +59,22 @@ export const ProductFormAnimation: React.FC = () => {
     fps,
     config: { damping: 14, stiffness: 140 },
   });
+  const typeStages = [
+    { from: TYPE_START, label: "Nouveauté", color: BRAND.orangeFrom },
+    { from: TYPE_START + 30, label: "Promotion", color: BRAND.mintText },
+    { from: TYPE_START + 60, label: "Invendu", color: "#C46E0C" },
+  ];
+  const currentTypeStage = typeStages
+    .filter((s) => frame >= s.from)
+    .pop() ?? typeStages[0];
+  const typeFlipPhase = Math.max(0, frame - currentTypeStage.from);
+  const typeFlash =
+    typeFlipPhase < 6
+      ? interpolate(typeFlipPhase, [0, 6], [0.6, 1])
+      : 1;
+  const typeFinal = frame >= TYPE_START + 60;
 
-  const DESC_START = 210;
+  const DESC_START = 240;
   const descCharCount = Math.min(
     DESCRIPTION_TEXT.length,
     Math.max(0, Math.floor((frame - DESC_START) * 0.35)),
@@ -210,7 +224,7 @@ export const ProductFormAnimation: React.FC = () => {
           <div
             style={{
               border: `3px solid ${
-                typeIn > 0.95 ? BRAND.mintText : "#E8D7C6"
+                typeFinal ? BRAND.mintText : currentTypeStage.color
               }`,
               borderRadius: 18,
               padding: "18px 20px",
@@ -222,11 +236,27 @@ export const ProductFormAnimation: React.FC = () => {
               justifyContent: "space-between",
               background: BRAND.cream,
               opacity: typeIn,
-              transform: `translateY(${(1 - typeIn) * 20}px)`,
+              transform: `translateY(${(1 - typeIn) * 20}px) scale(${
+                typeFlash * 0.4 + 0.6
+              })`,
+              transition: "border-color 120ms",
             }}
           >
-            <span>Nouveauté</span>
-            <span style={{ color: BRAND.gray }}>▾</span>
+            <span
+              style={{
+                opacity: typeFlash,
+                color: currentTypeStage.color,
+                fontWeight: 800,
+              }}
+            >
+              {currentTypeStage.label}
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              {typeFinal ? (
+                <span style={{ color: BRAND.mintText, fontSize: 30 }}>✓</span>
+              ) : null}
+              <span style={{ color: BRAND.gray }}>▾</span>
+            </span>
           </div>
         </div>
 
