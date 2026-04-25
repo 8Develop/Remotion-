@@ -18,6 +18,7 @@ const SHORT_INTRO = d(3);
 const SHORT_ADV1 = d(10);
 const SHORT_ADV2 = d(10);
 const SHORT_ADV3 = d(10);
+const SHORT_ADV4 = d(10);
 const SHORT_OUTRO = d(4);
 const SHORT_TRANSITION = 10;
 
@@ -142,7 +143,7 @@ const ShortIntro: React.FC = () => {
           textAlign: "center",
         }}
       >
-        3 avantages
+        4 avantages
       </div>
 
       <div
@@ -280,8 +281,13 @@ const Advantage1: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const noSiteIn = spring({
+    frame: frame - 6,
+    fps,
+    config: { damping: 12, stiffness: 150 },
+  });
   const cardIn = spring({
-    frame: frame - 18,
+    frame: frame - 24,
     fps,
     config: { damping: 14, stiffness: 140 },
   });
@@ -307,10 +313,30 @@ const Advantage1: React.FC = () => {
         justifyContent: "flex-start",
         paddingTop: 360,
         fontFamily: "Poppins, system-ui, sans-serif",
-        gap: 32,
+        gap: 26,
       }}
     >
       <ShortBadge step="Avantage 1" title="Mettez en vente en 1 minute" />
+
+      <div
+        style={{
+          opacity: noSiteIn,
+          transform: `translateY(${(1 - noSiteIn) * 24}px) scale(${0.92 + noSiteIn * 0.08})`,
+          background: `linear-gradient(135deg, ${BRAND.mintText}, #1F8F58)`,
+          color: "white",
+          borderRadius: 999,
+          padding: "18px 36px",
+          fontSize: 42,
+          fontWeight: 900,
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          boxShadow: "0 16px 36px rgba(46,171,108,0.45)",
+        }}
+      >
+        <span style={{ fontSize: 44 }}>✓</span>
+        Aucun site internet requis
+      </div>
 
       <div
         style={{
@@ -329,8 +355,8 @@ const Advantage1: React.FC = () => {
         style={{
           opacity: ctaIn,
           transform: `translateY(${(1 - ctaIn) * 30}px)`,
-          marginTop: 8,
-          fontSize: 52,
+          marginTop: 4,
+          fontSize: 48,
           fontWeight: 900,
           color: BRAND.navy,
           textAlign: "center",
@@ -338,9 +364,9 @@ const Advantage1: React.FC = () => {
           lineHeight: 1.2,
         }}
       >
-        Photo, prix, click &amp; collect.
+        Wissyshop est <span style={{ color: BRAND.orangeDeep }}>votre vitrine</span>.
         <br />
-        <span style={{ color: BRAND.orangeDeep }}>Votre article est en ligne.</span>
+        Vendez sans créer de site.
       </div>
     </AbsoluteFill>
   );
@@ -739,6 +765,203 @@ const Advantage3: React.FC = () => {
   );
 };
 
+type BoostStat = {
+  icon: string;
+  title: string;
+  value: string;
+  example: string;
+  accent: string;
+  appearAt: number;
+};
+
+const BOOST_STATS: BoostStat[] = [
+  {
+    icon: "💬",
+    title: "Engagement",
+    value: "+20 à 50 %",
+    example: "+200 à 500 interactions / 1 000 abonnés",
+    accent: "#1877F2",
+    appearAt: 30,
+  },
+  {
+    icon: "📣",
+    title: "Portée",
+    value: "+30 à 100 %",
+    example: "300 → 390 à 600 personnes touchées",
+    accent: "#F26B2A",
+    appearAt: 60,
+  },
+  {
+    icon: "👥",
+    title: "Nouveaux abonnés",
+    value: "+5 à 15 %",
+    example: "+50 à 150 / 1 000 abonnés",
+    accent: "#2EAB6C",
+    appearAt: 90,
+  },
+  {
+    icon: "🛒",
+    title: "Visites en boutique",
+    value: "+10 à 30 %",
+    example: "100 visites / sem. → 110 à 130",
+    accent: "#9333EA",
+    appearAt: 120,
+  },
+];
+
+const BoostStatRow: React.FC<{ stat: BoostStat }> = ({ stat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const enter = spring({
+    frame: frame - stat.appearAt,
+    fps,
+    config: { damping: 14, stiffness: 140 },
+  });
+  const valueIn = spring({
+    frame: frame - (stat.appearAt + 6),
+    fps,
+    config: { damping: 9, stiffness: 200 },
+  });
+
+  return (
+    <div
+      style={{
+        opacity: enter,
+        transform: `translateX(${(1 - enter) * 60}px)`,
+        width: 940,
+        background: "#FFFFFF",
+        borderRadius: 32,
+        padding: "22px 28px",
+        display: "flex",
+        alignItems: "center",
+        gap: 24,
+        border: `4px solid ${stat.accent}`,
+        boxShadow: `0 18px 40px ${stat.accent}33`,
+        fontFamily: "Poppins, system-ui, sans-serif",
+      }}
+    >
+      <div
+        style={{
+          width: 110,
+          height: 110,
+          borderRadius: 28,
+          background: `linear-gradient(135deg, ${stat.accent}, ${stat.accent}CC)`,
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 64,
+          flexShrink: 0,
+          boxShadow: `0 12px 28px ${stat.accent}55`,
+        }}
+      >
+        {stat.icon}
+      </div>
+      <div style={{ flex: 1 }}>
+        <div
+          style={{
+            fontSize: 38,
+            fontWeight: 900,
+            color: BRAND.navy,
+            lineHeight: 1.05,
+          }}
+        >
+          {stat.title}
+        </div>
+        <div
+          style={{
+            fontSize: 24,
+            color: BRAND.gray,
+            fontWeight: 700,
+            marginTop: 6,
+            lineHeight: 1.25,
+          }}
+        >
+          {stat.example}
+        </div>
+      </div>
+      <div
+        style={{
+          transform: `scale(${valueIn})`,
+          background: stat.accent,
+          color: "white",
+          borderRadius: 22,
+          padding: "14px 20px",
+          fontSize: 36,
+          fontWeight: 900,
+          letterSpacing: -0.5,
+          flexShrink: 0,
+          boxShadow: `0 14px 28px ${stat.accent}55`,
+        }}
+      >
+        {stat.value}
+      </div>
+    </div>
+  );
+};
+
+const Advantage4: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const conclusionIn = spring({
+    frame: frame - 200,
+    fps,
+    config: { damping: 13, stiffness: 130 },
+  });
+  const conclusionPulse = 1 + Math.sin(Math.max(0, frame - 200) / 7) * 0.05;
+
+  return (
+    <AbsoluteFill
+      style={{
+        background: `linear-gradient(180deg, ${BRAND.cream} 0%, #F3DFCF 100%)`,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingTop: 360,
+        fontFamily: "Poppins, system-ui, sans-serif",
+        gap: 18,
+      }}
+    >
+      <ShortBadge step="Avantage 4" title="Boostez votre visibilité Facebook" />
+
+      {BOOST_STATS.map((stat) => (
+        <BoostStatRow key={stat.title} stat={stat} />
+      ))}
+
+      <div
+        style={{
+          opacity: conclusionIn,
+          transform: `translateY(${(1 - conclusionIn) * 30}px) scale(${conclusionPulse})`,
+          marginTop: 14,
+          background: `linear-gradient(135deg, ${BRAND.mintText}, #1F8F58)`,
+          color: "white",
+          borderRadius: 28,
+          padding: "20px 32px",
+          display: "flex",
+          alignItems: "center",
+          gap: 18,
+          boxShadow: "0 18px 40px rgba(46,171,108,0.45)",
+          maxWidth: 940,
+        }}
+      >
+        <span style={{ fontSize: 54 }}>📈</span>
+        <div
+          style={{
+            fontSize: 38,
+            fontWeight: 900,
+            lineHeight: 1.05,
+          }}
+        >
+          Plus de visibilité,
+          <br />
+          plus de ventes.
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const ShortOutro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -876,6 +1099,15 @@ export const WissyshopShort: React.FC = () => {
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
+          presentation={slide({ direction: "from-right" })}
+          timing={linearTiming({ durationInFrames: SHORT_TRANSITION })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={SHORT_ADV4}>
+          <Advantage4 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
           presentation={fade()}
           timing={linearTiming({ durationInFrames: SHORT_TRANSITION })}
         />
@@ -889,7 +1121,7 @@ export const WissyshopShort: React.FC = () => {
 };
 
 const SHORT_SEQUENCE_FRAMES =
-  SHORT_INTRO + SHORT_ADV1 + SHORT_ADV2 + SHORT_ADV3 + SHORT_OUTRO;
-const SHORT_TRANSITION_FRAMES = SHORT_TRANSITION * 4;
+  SHORT_INTRO + SHORT_ADV1 + SHORT_ADV2 + SHORT_ADV3 + SHORT_ADV4 + SHORT_OUTRO;
+const SHORT_TRANSITION_FRAMES = SHORT_TRANSITION * 5;
 export const WISSYSHOP_SHORT_TOTAL_FRAMES =
   SHORT_SEQUENCE_FRAMES - SHORT_TRANSITION_FRAMES;
