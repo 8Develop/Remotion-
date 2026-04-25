@@ -8,6 +8,7 @@ import {
   WissyshopShort,
   WISSYSHOP_SHORT_TOTAL_FRAMES,
 } from "./montage/WissyshopShort";
+import { WissyshopMontageHorizontal } from "./montage/WissyshopMontageHorizontal";
 import { COMP } from "./montage/theme";
 
 export const RemotionRoot: React.FC = () => {
@@ -20,6 +21,14 @@ export const RemotionRoot: React.FC = () => {
         fps={COMP.fps}
         width={COMP.width}
         height={COMP.height}
+      />
+      <Composition
+        id="WissyshopMontageHorizontal"
+        component={WissyshopMontageHorizontal}
+        durationInFrames={MONTAGE_TOTAL_FRAMES}
+        fps={COMP.fps}
+        width={1920}
+        height={1080}
       />
       <Composition
         id="WissyshopShort"
