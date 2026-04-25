@@ -49,13 +49,13 @@ const ShortBadge: React.FC<{
           background: `linear-gradient(135deg, ${BRAND.orangeFrom}, ${BRAND.orangeTo})`,
           color: "white",
           borderRadius: 999,
-          padding: "12px 28px",
-          fontSize: 30,
-          fontWeight: 700,
+          padding: "16px 36px",
+          fontSize: 40,
+          fontWeight: 800,
           letterSpacing: 0.5,
           textTransform: "uppercase",
-          boxShadow: "0 12px 28px rgba(242,107,42,0.35)",
-          marginBottom: 12,
+          boxShadow: "0 14px 32px rgba(242,107,42,0.4)",
+          marginBottom: 16,
         }}
       >
         {step}
@@ -66,14 +66,14 @@ const ShortBadge: React.FC<{
           transform: `translateY(${(1 - enter) * 20}px)`,
           background: "rgba(255,255,255,0.95)",
           color: BRAND.navy,
-          borderRadius: 24,
-          padding: "16px 30px",
-          fontSize: 46,
-          fontWeight: 800,
-          boxShadow: "0 14px 36px rgba(26,26,46,0.15)",
-          border: `3px solid ${BRAND.orangeFrom}`,
+          borderRadius: 28,
+          padding: "22px 38px",
+          fontSize: 64,
+          fontWeight: 900,
+          boxShadow: "0 18px 40px rgba(26,26,46,0.18)",
+          border: `4px solid ${BRAND.orangeFrom}`,
           textAlign: "center",
-          maxWidth: 960,
+          maxWidth: 1000,
           lineHeight: 1.1,
         }}
       >
@@ -124,51 +124,38 @@ const ShortIntro: React.FC = () => {
         style={{
           transform: `scale(${logoIn})`,
           opacity: logoIn,
-          marginBottom: 24,
+          marginBottom: 32,
         }}
       >
-        <WissyLogo height={400} />
+        <WissyLogo height={460} />
       </div>
 
       <div
         style={{
           transform: `translateY(${(1 - titleIn) * 30}px)`,
           opacity: titleIn,
-          fontSize: 100,
+          fontSize: 170,
           fontWeight: 900,
           color: BRAND.navy,
-          letterSpacing: -2,
+          letterSpacing: -3,
           lineHeight: 1,
           textAlign: "center",
         }}
       >
         3 avantages
       </div>
-      <div
-        style={{
-          transform: `translateY(${(1 - titleIn) * 30}px)`,
-          opacity: titleIn,
-          marginTop: 14,
-          fontSize: 56,
-          fontWeight: 700,
-          color: BRAND.navySoft,
-          textAlign: "center",
-        }}
-      >
-        en 35 secondes
-      </div>
 
       <div
         style={{
           transform: `translateY(${(1 - pillIn) * 20}px)`,
           opacity: pillIn,
-          marginTop: 36,
-          fontSize: 32,
-          fontWeight: 600,
+          marginTop: 48,
+          fontSize: 46,
+          fontWeight: 700,
           background: BRAND.mint,
           color: BRAND.mintText,
-          paddingInline: 28,
-          paddingBlock: 12,
+          paddingInline: 40,
+          paddingBlock: 18,
           borderRadius: 999,
         }}
       >
@@ -188,39 +175,39 @@ const ProductCardMini: React.FC<{
       style={{
         transform: `scale(${scale})`,
         background: "#FFFFFF",
-        borderRadius: 36,
-        padding: 28,
-        width: 760,
-        boxShadow: "0 22px 50px rgba(26,26,46,0.16)",
-        border: "2px solid #F4E6D9",
+        borderRadius: 44,
+        padding: 36,
+        width: 920,
+        boxShadow: "0 26px 60px rgba(26,26,46,0.18)",
+        border: "3px solid #F4E6D9",
         fontFamily: "Poppins, system-ui, sans-serif",
       }}
     >
       <div
         style={{
-          height: 360,
-          borderRadius: 24,
+          height: 480,
+          borderRadius: 28,
           background:
             "linear-gradient(135deg, #FFD1DA 0%, #FFA5C1 50%, #D985E0 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: 22,
+          marginBottom: 28,
           position: "relative",
           overflow: "hidden",
         }}
       >
-        <div style={{ fontSize: 220 }}>🎂</div>
+        <div style={{ fontSize: 300 }}>🎂</div>
         <div
           style={{
             position: "absolute",
-            top: 16,
-            left: 16,
+            top: 22,
+            left: 22,
             background: "white",
             color: BRAND.orangeDeep,
             fontWeight: 800,
-            fontSize: 22,
-            padding: "8px 18px",
+            fontSize: 30,
+            padding: "12px 24px",
             borderRadius: 999,
           }}
         >
@@ -230,15 +217,15 @@ const ProductCardMini: React.FC<{
           <div
             style={{
               position: "absolute",
-              bottom: 16,
-              right: 16,
+              bottom: 22,
+              right: 22,
               background: BRAND.mintText,
               color: "white",
               borderRadius: 999,
-              padding: "10px 20px",
-              fontSize: 22,
+              padding: "14px 28px",
+              fontSize: 30,
               fontWeight: 800,
-              boxShadow: "0 10px 22px rgba(5,150,105,0.4)",
+              boxShadow: "0 12px 26px rgba(5,150,105,0.4)",
             }}
           >
             ✓ En ligne
@@ -248,20 +235,20 @@ const ProductCardMini: React.FC<{
 
       <div
         style={{
-          fontSize: 36,
-          fontWeight: 800,
+          fontSize: 54,
+          fontWeight: 900,
           color: BRAND.navy,
-          marginBottom: 8,
+          marginBottom: 12,
         }}
       >
         Gâteau enfant 🦄
       </div>
       <div
         style={{
-          fontSize: 26,
-          fontWeight: 600,
-          color: BRAND.gray,
-          marginBottom: 16,
+          fontSize: 40,
+          fontWeight: 800,
+          color: BRAND.orangeDeep,
+          marginBottom: 22,
         }}
       >
         45,00 €
@@ -271,17 +258,17 @@ const ProductCardMini: React.FC<{
         <div
           style={{
             display: "flex",
-            gap: 12,
+            gap: 16,
             alignItems: "center",
             background: BRAND.mint,
             color: BRAND.mintText,
-            borderRadius: 18,
-            padding: "14px 22px",
-            fontSize: 28,
+            borderRadius: 22,
+            padding: "20px 28px",
+            fontSize: 40,
             fontWeight: 800,
           }}
         >
-          <span style={{ fontSize: 32 }}>🛍️</span>
+          <span style={{ fontSize: 46 }}>🛍️</span>
           Click &amp; collect — Liège
         </div>
       ) : null}
@@ -318,9 +305,9 @@ const Advantage1: React.FC = () => {
         background: `linear-gradient(180deg, ${BRAND.cream} 0%, #F3DFCF 100%)`,
         alignItems: "center",
         justifyContent: "flex-start",
-        paddingTop: 280,
+        paddingTop: 360,
         fontFamily: "Poppins, system-ui, sans-serif",
-        gap: 28,
+        gap: 32,
       }}
     >
       <ShortBadge step="Avantage 1" title="Mettez en vente en 1 minute" />
@@ -342,12 +329,12 @@ const Advantage1: React.FC = () => {
         style={{
           opacity: ctaIn,
           transform: `translateY(${(1 - ctaIn) * 30}px)`,
-          marginTop: 4,
-          fontSize: 38,
-          fontWeight: 800,
+          marginTop: 8,
+          fontSize: 52,
+          fontWeight: 900,
           color: BRAND.navy,
           textAlign: "center",
-          maxWidth: 900,
+          maxWidth: 980,
           lineHeight: 1.2,
         }}
       >
@@ -371,42 +358,43 @@ const NetworkPill: React.FC<{
       style={{
         opacity: appear,
         transform: `translateY(${(1 - appear) * 30}px) scale(${0.92 + appear * 0.08})`,
-        width: 760,
+        width: 920,
         background: "#FFFFFF",
-        borderRadius: 28,
-        padding: "18px 24px",
+        borderRadius: 32,
+        padding: "26px 32px",
         display: "flex",
         alignItems: "center",
-        gap: 18,
-        border: `3px solid ${accent}`,
-        boxShadow: `0 14px 32px ${accent}33`,
+        gap: 24,
+        border: `4px solid ${accent}`,
+        boxShadow: `0 16px 36px ${accent}3D`,
         fontFamily: "Poppins, system-ui, sans-serif",
       }}
     >
       <div
         style={{
-          width: 70,
-          height: 70,
-          borderRadius: 18,
+          width: 96,
+          height: 96,
+          borderRadius: 24,
           background: accent,
           color: "white",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 38,
+          fontSize: 54,
         }}
       >
         {emoji}
       </div>
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 32, fontWeight: 800, color: BRAND.navy }}>
+        <div style={{ fontSize: 48, fontWeight: 900, color: BRAND.navy }}>
           {name}
         </div>
         <div
           style={{
-            fontSize: 22,
+            fontSize: 32,
             color: BRAND.gray,
-            fontWeight: 600,
+            fontWeight: 700,
+            marginTop: 4,
           }}
         >
           {posted > 0.2 ? "✓ Publié" : "Prêt à publier…"}
@@ -416,17 +404,17 @@ const NetworkPill: React.FC<{
         style={{
           opacity: posted,
           transform: `scale(${posted})`,
-          width: 64,
-          height: 64,
-          borderRadius: 32,
+          width: 86,
+          height: 86,
+          borderRadius: 43,
           background: BRAND.mintText,
           color: "white",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 36,
+          fontSize: 48,
           fontWeight: 900,
-          boxShadow: "0 10px 22px rgba(5,150,105,0.35)",
+          boxShadow: "0 12px 26px rgba(5,150,105,0.4)",
         }}
       >
         ✓
@@ -495,9 +483,9 @@ const Advantage2: React.FC = () => {
         background: `linear-gradient(180deg, ${BRAND.cream} 0%, #F3DFCF 100%)`,
         alignItems: "center",
         justifyContent: "flex-start",
-        paddingTop: 270,
+        paddingTop: 360,
         fontFamily: "Poppins, system-ui, sans-serif",
-        gap: 18,
+        gap: 22,
       }}
     >
       <ShortBadge step="Avantage 2" title="Publiez partout en 1 clic" />
@@ -528,17 +516,17 @@ const Advantage2: React.FC = () => {
         style={{
           opacity: buttonIn,
           transform: `translateY(${(1 - buttonIn) * 30}px) scale(${buttonScale})`,
-          marginTop: 14,
+          marginTop: 22,
           background: `linear-gradient(135deg, ${BRAND.orangeFrom}, ${BRAND.orangeDeep})`,
           color: "white",
-          borderRadius: 24,
-          padding: "22px 44px",
-          fontSize: 40,
+          borderRadius: 28,
+          padding: "28px 56px",
+          fontSize: 56,
           fontWeight: 900,
-          boxShadow: "0 18px 40px rgba(242,107,42,0.45)",
+          boxShadow: "0 22px 48px rgba(242,107,42,0.5)",
           display: "flex",
           alignItems: "center",
-          gap: 16,
+          gap: 20,
         }}
       >
         <span>🚀</span>
@@ -549,12 +537,13 @@ const Advantage2: React.FC = () => {
         style={{
           opacity: ctaIn,
           transform: `translateY(${(1 - ctaIn) * 24}px)`,
-          marginTop: 6,
-          fontSize: 32,
-          fontWeight: 700,
+          marginTop: 12,
+          fontSize: 46,
+          fontWeight: 800,
           color: BRAND.navySoft,
           textAlign: "center",
-          maxWidth: 900,
+          maxWidth: 980,
+          lineHeight: 1.2,
         }}
       >
         Sur <strong>vos</strong> propres réseaux,
@@ -600,9 +589,9 @@ const Advantage3: React.FC = () => {
         background: `linear-gradient(180deg, ${BRAND.cream} 0%, #F3DFCF 100%)`,
         alignItems: "center",
         justifyContent: "flex-start",
-        paddingTop: 280,
+        paddingTop: 360,
         fontFamily: "Poppins, system-ui, sans-serif",
-        gap: 24,
+        gap: 28,
       }}
     >
       <ShortBadge step="Avantage 3" title="Paiement sécurisé, retrait facile" />
@@ -612,38 +601,40 @@ const Advantage3: React.FC = () => {
           opacity: payIn,
           transform: `translateY(${(1 - payIn) * 60}px) scale(${0.94 + payIn * 0.06})`,
           background: "white",
-          borderRadius: 36,
-          padding: 36,
-          width: 760,
-          boxShadow: "0 22px 50px rgba(0,0,0,0.16)",
+          borderRadius: 44,
+          padding: 44,
+          width: 920,
+          boxShadow: "0 26px 60px rgba(0,0,0,0.18)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 18,
+          gap: 22,
         }}
       >
         <div
           style={{
             transform: `scale(${checkIn})`,
-            width: 130,
-            height: 130,
-            borderRadius: 65,
+            width: 170,
+            height: 170,
+            borderRadius: 85,
             background: "linear-gradient(135deg, #34D399 0%, #059669 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 80,
+            fontSize: 110,
             color: "white",
-            boxShadow: "0 18px 36px rgba(5,150,105,0.4)",
+            boxShadow: "0 22px 44px rgba(5,150,105,0.45)",
           }}
         >
           ✓
         </div>
         <div
           style={{
-            fontSize: 40,
-            fontWeight: 800,
+            fontSize: 56,
+            fontWeight: 900,
             color: BRAND.navy,
+            textAlign: "center",
+            lineHeight: 1.1,
           }}
         >
           Paiement validé · 45,00 €
@@ -651,11 +642,11 @@ const Advantage3: React.FC = () => {
         <div
           style={{
             display: "flex",
-            gap: 14,
+            gap: 16,
             alignItems: "center",
-            fontSize: 24,
+            fontSize: 34,
             color: BRAND.navySoft,
-            fontWeight: 600,
+            fontWeight: 700,
           }}
         >
           <span>🔒</span> Bancontact · Visa · Mastercard
@@ -666,7 +657,7 @@ const Advantage3: React.FC = () => {
         style={{
           opacity: arrowIn,
           transform: `scale(${arrowIn})`,
-          fontSize: 56,
+          fontSize: 80,
           color: BRAND.orangeDeep,
           fontWeight: 900,
         }}
@@ -679,26 +670,26 @@ const Advantage3: React.FC = () => {
           opacity: pickupIn,
           transform: `translateY(${(1 - pickupIn) * 60}px) scale(${0.94 + pickupIn * 0.06})`,
           background: `linear-gradient(135deg, #D4F0E0 0%, #A7E3C2 100%)`,
-          border: `3px solid ${BRAND.mintText}`,
-          borderRadius: 32,
-          padding: "26px 30px",
-          width: 760,
+          border: `4px solid ${BRAND.mintText}`,
+          borderRadius: 36,
+          padding: "32px 38px",
+          width: 920,
           display: "flex",
           alignItems: "center",
-          gap: 22,
+          gap: 28,
         }}
       >
         <div
           style={{
-            width: 90,
-            height: 90,
-            borderRadius: 24,
+            width: 120,
+            height: 120,
+            borderRadius: 30,
             background: BRAND.mintText,
             color: "white",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 50,
+            fontSize: 70,
           }}
         >
           🛍️
@@ -706,7 +697,7 @@ const Advantage3: React.FC = () => {
         <div style={{ flex: 1 }}>
           <div
             style={{
-              fontSize: 32,
+              fontSize: 48,
               fontWeight: 900,
               color: BRAND.navy,
               lineHeight: 1.1,
@@ -716,10 +707,10 @@ const Advantage3: React.FC = () => {
           </div>
           <div
             style={{
-              fontSize: 24,
+              fontSize: 34,
               color: BRAND.mintText,
-              fontWeight: 700,
-              marginTop: 6,
+              fontWeight: 800,
+              marginTop: 8,
             }}
           >
             Rapide, sans file d'attente
@@ -731,12 +722,13 @@ const Advantage3: React.FC = () => {
         style={{
           opacity: ctaIn,
           transform: `translateY(${(1 - ctaIn) * 20}px)`,
-          marginTop: 4,
-          fontSize: 32,
-          fontWeight: 700,
+          marginTop: 8,
+          fontSize: 46,
+          fontWeight: 800,
           color: BRAND.navySoft,
           textAlign: "center",
-          maxWidth: 900,
+          maxWidth: 980,
+          lineHeight: 1.2,
         }}
       >
         Le client paye en ligne,
@@ -802,22 +794,22 @@ const ShortOutro: React.FC = () => {
           transform: `scale(${logoIn * pulse})`,
           opacity: logoIn,
           background: "white",
-          borderRadius: 44,
-          padding: "22px 44px",
-          marginBottom: 36,
-          boxShadow: "0 24px 60px rgba(0,0,0,0.25)",
+          borderRadius: 48,
+          padding: "26px 52px",
+          marginBottom: 44,
+          boxShadow: "0 28px 64px rgba(0,0,0,0.28)",
         }}
       >
-        <WissyLogo height={280} />
+        <WissyLogo height={340} />
       </div>
 
       <div
         style={{
           opacity: ctaIn,
           transform: `translateY(${(1 - ctaIn) * 26}px)`,
-          fontSize: 110,
+          fontSize: 150,
           fontWeight: 900,
-          letterSpacing: -2,
+          letterSpacing: -3,
           textAlign: "center",
           lineHeight: 1,
         }}
@@ -831,15 +823,15 @@ const ShortOutro: React.FC = () => {
         style={{
           opacity: urlIn,
           transform: `translateY(${(1 - urlIn) * 26}px)`,
-          marginTop: 44,
-          fontSize: 50,
-          fontWeight: 800,
+          marginTop: 56,
+          fontSize: 70,
+          fontWeight: 900,
           background: "white",
           color: BRAND.orangeDeep,
-          paddingInline: 44,
-          paddingBlock: 20,
+          paddingInline: 56,
+          paddingBlock: 26,
           borderRadius: 999,
-          boxShadow: "0 16px 40px rgba(0,0,0,0.25)",
+          boxShadow: "0 18px 44px rgba(0,0,0,0.3)",
         }}
       >
         wissyshop.com
