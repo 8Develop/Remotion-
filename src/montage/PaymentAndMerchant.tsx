@@ -404,6 +404,19 @@ export const MerchantReceives: React.FC = () => {
         </div>
         <div
           style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 22,
+            color: BRAND.gray,
+            fontWeight: 500,
+          }}
+        >
+          <span>− Frais paiement Stripe</span>
+          <span>− 0,40 €</span>
+        </div>
+        <div
+          style={{
             height: 2,
             background: "#F0E4D9",
             margin: "4px 0",
@@ -421,7 +434,7 @@ export const MerchantReceives: React.FC = () => {
         >
           <span>Vous recevez</span>
           <span style={{ color: BRAND.mintText, fontSize: 38, fontWeight: 900 }}>
-            42,75 €
+            42,35 €
           </span>
         </div>
       </div>
@@ -458,7 +471,7 @@ export const MerchantReceives: React.FC = () => {
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 26, color: BRAND.navy, fontWeight: 700 }}>
-            + 42,75 € sur votre compte
+            + 42,35 € sur votre compte
           </div>
           <div
             style={{
