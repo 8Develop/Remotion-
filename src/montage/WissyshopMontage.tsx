@@ -31,6 +31,10 @@ import {
   MerchantReceives,
   MerchantPrepare,
 } from "./PaymentAndMerchant";
+import {
+  VisibilityBoostAnimation,
+  VISIBILITY_BOOST_DURATION,
+} from "./VisibilityBoostAnimation";
 import { BRAND, FPS } from "./theme";
 
 loadFont();
@@ -155,6 +159,15 @@ export const WissyshopMontage: React.FC = () => {
 
         <TransitionSeries.Transition
           presentation={fade()}
+          timing={linearTiming({ durationInFrames: 12 })}
+        />
+
+        <TransitionSeries.Sequence durationInFrames={VISIBILITY_BOOST_DURATION}>
+          <VisibilityBoostAnimation />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={fade()}
           timing={linearTiming({ durationInFrames: 14 })}
         />
 
@@ -180,7 +193,8 @@ const SEQUENCE_FRAMES =
   d(4) +
   d(5) +
   d(3) +
+  VISIBILITY_BOOST_DURATION +
   d(5);
 const TRANSITION_FRAMES =
-  10 + 12 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 14;
+  10 + 12 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 12 + 10 + 10 + 12 + 14;
 export const MONTAGE_TOTAL_FRAMES = SEQUENCE_FRAMES - TRANSITION_FRAMES;
